@@ -37,9 +37,9 @@ void Draw()
             if (j == 0)
                 cout << "#";
             if (i == y && j == x)
-                cout << "*";
+                cout << "@";
             else if (i == fruitY && j == fruitX)
-                cout << "%";
+                cout << "*";
             else
             {
                 bool print = false;
@@ -47,7 +47,7 @@ void Draw()
                 {
                     if (tailX[k] == j && tailY[k] == i)
                     {
-                        cout << "@"; print = true;
+                        cout << "^"; print = true;
                     }
                 }
                 if (!print) cout << " ";
