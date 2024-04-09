@@ -3,14 +3,21 @@
 #include <windows.h>
 using namespace std;
 
+// Game state variables
+
 bool gameOver;
 const int width = 20;
 const int height = 20;
 int x, y, fruitX, fruitY, score;
-int tailX[100], tailY[100];
-int nTail;
+int tailX[100], tailY[100]; // Arrays to store the snake's body positions
+int nTail; // Length of the snake's body
+
+// Enum for snake's direction
+
 enum eDirecton { STOP = 0, LEFT, RIGHT, UP, DOWN };
 eDirecton dir;
+
+// Function to set up the game
 
 void Setup()
 {
@@ -22,6 +29,7 @@ void Setup()
     fruitY = rand() % height;
     score = 0;
 }
+// Function to draw the game state to the console
 
 void Draw()
 {
@@ -37,9 +45,9 @@ void Draw()
             if (j == 0)
                 cout << "#";
             if (i == y && j == x)
-                cout << "@";
+                cout << "@";  // Snake's head
             else if (i == fruitY && j == fruitX)
-                cout << "*";
+                cout << "*";  // Fruit
             else
             {
                 bool print = false;
@@ -47,7 +55,7 @@ void Draw()
                 {
                     if (tailX[k] == j && tailY[k] == i)
                     {
-                        cout << "^"; print = true;
+                        cout << "^"; print = true;  // Snake's body
                     }
                 }
                 if (!print) cout << " ";
@@ -65,6 +73,7 @@ void Draw()
     cout << endl;
     cout << "Score:" << score << endl;
 }
+// Function to handle user input
 
 void Input()
 {
@@ -90,6 +99,8 @@ void Input()
         }
     }
 }
+
+// Function to update the game state
 
 void algorithm()
 {
@@ -151,7 +162,7 @@ int main()
         Draw();
         Input();
         algorithm();
-        Sleep(50); // Добавляем задержку, чтобы замедлить движение змейки
+        Sleep(50); // Add a delay to slow down the snake's movement
     }
     return 0;
 }
